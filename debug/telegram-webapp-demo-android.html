@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Broken Tap Events</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .reproduce > * {
+        list-style-type: decimal;
+        margin-bottom: 1em;
+      }
+      .interactive-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+      }
+    </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      function invite() {
+        window.Telegram.WebApp.openTelegramLink(
+          "https://t.me/share/url?url=https%3A%2F%2Ft.me%2Fnb_bottle_bot"
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <strong>Bug with non-working taps on Android</strong>
+    <ol class="reproduce">
+      <li>Open the app on Android</li>
+      <li>
+        Make sure tapping on the input opens the on-screen keyboard
+        <div class="interactive-container"><input class="input_test" placeholder="tap" type="text" /></div>
+      </li>
+      <li>
+        Open the invitation dialog using the invite button, then return to the
+        demo app
+        <div class="interactive-container">
+          <button class="invite" onclick="invite()">Invite</button>
+        </div>
+      </li>
+      <li>
+        Make sure tapping on the input no longer opens the keyboard
+        <div class="interactive-container"><input class="input_test" placeholder="tap" type="text" /></div>
+      </li>
+    </ol>
+  </body>
+</html>
